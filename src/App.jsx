@@ -13,17 +13,26 @@ function App() {
   const [investmentDuration, setInvestmentDuration] = useState(10);
   const [annualData, setAnnualData] = useState([]);
 
-  function handleInitialInvestmentChange(event) {
-    setInitialInvestment(parseInt(event.target.value));
-  }
-  function handleAnnualInvestmentChange(event) {
-    setAnnualInvestment(parseInt(event.target.value));
-  }
-  function handleExpectedReturnChange(event) {
-    setExpectedReturn(parseInt(event.target.value));
-  }
-  function handleInvestmentDurationChange(event) {
-    setInvestmentDuration(parseInt(event.target.value));
+  const inputIsValid = investmentDuration >= 1;
+
+  function handleUserInputChange(id, newValue) {
+    const numericValue = +newValue; // parseInt(newValue) converts the string input to a number
+    switch (id) {
+      case "initial-investment":
+        setInitialInvestment(numericValue);
+        break;
+      case "annual-investment":
+        setAnnualInvestment(numericValue);
+        break;
+      case "expected-return":
+        setExpectedReturn(numericValue);
+        break;
+      case "investment-duration":
+        setInvestmentDuration(numericValue);
+        break;
+      default:
+        break;
+    }
   }
 
   useEffect(() => {
@@ -47,12 +56,10 @@ function App() {
         annualInvestment={annualInvestment}
         expectedReturn={expectedReturn}
         investmentDuration={investmentDuration}
-        onInitialInvestmentChange={handleInitialInvestmentChange}
-        onAnnualInvestmentChange={handleAnnualInvestmentChange}
-        onExpectedReturnChange={handleExpectedReturnChange}
-        onInvestmentDurationChange={handleInvestmentDurationChange}
+        onChange={handleUserInputChange}
       />
-      <ResultsTable annualData={annualData} />
+      {inputIsValid ? <ResultsTable annualData={annualData} /> :
+        <p className="center">Please enter a duration greater than 0.</p>}
     </>
   )
 }

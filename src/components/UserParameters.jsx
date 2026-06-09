@@ -2,12 +2,9 @@ function UserParameters({ initialInvestment,
   annualInvestment,
   expectedReturn,
   investmentDuration,
-  onInitialInvestmentChange,
-  onAnnualInvestmentChange,
-  onExpectedReturnChange,
-  onInvestmentDurationChange }) {
+  onChange }) {
   return (
-    <div id="user-input">
+    <section id="user-input">
       <div className="input-group">
         <div>
           <label htmlFor="initial-investment">Initial Investment</label>
@@ -16,7 +13,7 @@ function UserParameters({ initialInvestment,
             id="initial-investment"
             placeholder="e.g. 10000"
             value={initialInvestment}
-            onChange={onInitialInvestmentChange}
+            onChange={(event) => onChange("initial-investment", event.target.value)}
           />
         </div>
         <div>
@@ -26,7 +23,7 @@ function UserParameters({ initialInvestment,
             id="annual-investment"
             placeholder="e.g. 10000"
             value={annualInvestment}
-            onChange={onAnnualInvestmentChange}
+            onChange={(event) => onChange("annual-investment", event.target.value)}
           />
         </div>
       </div>
@@ -38,7 +35,7 @@ function UserParameters({ initialInvestment,
             id="expected-return"
             placeholder="e.g. 5"
             value={expectedReturn}
-            onChange={onExpectedReturnChange}
+            onChange={(event) => onChange("expected-return", event.target.value)}
           />
         </div>
         <div>
@@ -48,11 +45,11 @@ function UserParameters({ initialInvestment,
             id="investment-duration"
             placeholder="e.g. 10"
             value={investmentDuration}
-            onChange={onInvestmentDurationChange}
+            onChange={(event) => onChange("investment-duration", event.target.value)}
           />
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 
