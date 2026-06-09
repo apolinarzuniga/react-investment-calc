@@ -8,6 +8,10 @@ This project is a small React + Vite app that demonstrates basic state managemen
 - Calculates yearly investment results
 - Displays the results in a table
 
+## App Preview
+
+![App Example](public/app_example.png)
+
 ## Getting Started
 
 1. Install dependencies:
